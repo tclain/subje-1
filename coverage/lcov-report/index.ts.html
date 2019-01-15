@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for index.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="prettify.css" />
+    <link rel="stylesheet" href="base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="index.html">All files</a> index.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">96.55% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>56/58</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">92.86% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>39/42</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>7/7</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">98.18% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>54/55</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">41x</span>
+<span class="cline-any cline-yes">41x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">192x</span>
+<span class="cline-any cline-yes">192x</span>
+<span class="cline-any cline-yes">192x</span>
+<span class="cline-any cline-yes">192x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">192x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">192x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">192x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">192x</span>
+<span class="cline-any cline-yes">154x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">154x</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">134x</span>
+<span class="cline-any cline-yes">114x</span>
+<span class="cline-any cline-yes">114x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { isRangeSignificant, RangeTupple, isRange } from "./range";
+/** a map that associate a number and a boolean indicating is this number is used in a range */
+type RangeMap = Map&lt;number, boolean&gt;;
+&nbsp;
+/**
+ * RangeCollection class
+ */
+export class RangeCollection {
+  constructor(
+    public rangeMap: RangeMap = new Map(),
+    public smallestNumber = undefined,
+    public largestNumber = undefined
+  ) {}
+  /**
+   * Adds a range to the collection
+   * @param {Array&lt;number&gt;} range - Array of two integers that specify beginning and end of range.
+   */
+  add = (range: RangeTupple) =&gt; {
+    return this.edit("add", range);
+  };
+&nbsp;
+  /**
+   * Removes a range from the collection
+   * @param {Array&lt;number&gt;} range - Array of two integers that specify beginning and end of range.
+   */
+  remove = (range: RangeTupple) =&gt; {
+    return this.edit("remove", range);
+  };
+&nbsp;
+  edit = (operation: "add" | "remove", range: RangeTupple) =&gt; {
+    // check boundaries types
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (!isRange(range)) <span class="cstat-no" title="statement not covered" >throw new RangeError("this is not a range");</span>
+    if (!isRangeSignificant(range)) return;
+    const [lowerTarget, upperTarget] = range;
+&nbsp;
+    if (this.smallestNumber === undefined || lowerTarget &lt; this.smallestNumber)
+      this.smallestNumber = lowerTarget;
+    // update the global ranges
+    if (this.largestNumber === undefined || upperTarget &gt; this.largestNumber)
+      this.largestNumber = upperTarget;
+&nbsp;
+    let index = lowerTarget;
+    // updating the values depending on the operation
+    while (index &lt; upperTarget) {
+      this.rangeMap.set(index, operation === "add");
+      index++;
+    }
+    this.rangeMap.set(this.largestNumber, false);
+  };
+&nbsp;
+  /**
+   * trasverse the range [lowestNumer, largestNumber] and resconstruc the intervals inside an array
+   */
+  toRangesList = (): RangeTupple[] =&gt; {
+    /** the list of ranges to return  */
+    const ranges: RangeTupple[] = [];
+    let index = this.smallestNumber;
+    /** store the current constructed range */
+    let rangeLower = undefined;
+    let lastIndexInRange = 0;
+    let rangeToInsert = [];
+    while (index++ &lt;= this.largestNumber) {
+      // utils booleans
+      const realIndex = index - 1;
+      const aRangeHasStarted = rangeToInsert.length &gt; 0;
+      const noRangeStarted = !aRangeHasStarted;
+      const currentItemIsInARange = this.rangeMap.get(realIndex) === true;
+      const currentItemShouldNotBeInARange =
+        !this.rangeMap.has(realIndex) || this.rangeMap.get(realIndex) === false;
+      const currentItemBelongsToTheCurrentRange =
+        currentItemIsInARange &amp;&amp;
+        aRangeHasStarted &amp;&amp;
+        lastIndexInRange === realIndex - 1;
+      const currentItemIsInARangeButNoTheCurrent =
+        currentItemIsInARange &amp;&amp; !currentItemBelongsToTheCurrentRange;
+      // no in a range
+      if (noRangeStarted &amp;&amp; currentItemShouldNotBeInARange) continue;
+      if (
+        aRangeHasStarted &amp;&amp;
+        (currentItemShouldNotBeInARange || currentItemIsInARangeButNoTheCurrent)
+      ) {
+        rangeToInsert.push(lastIndexInRange + 1);
+        ranges.push(rangeToInsert as RangeTupple);
+        rangeToInsert = [];
+&nbsp;
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (currentItemIsInARangeButNoTheCurrent) {
+<span class="cstat-no" title="statement not covered" >          rangeToInsert.push(realIndex);</span>
+        }
+      }
+      if (noRangeStarted &amp;&amp; currentItemIsInARange) {
+        rangeToInsert.push(realIndex);
+        rangeLower = realIndex;
+        lastIndexInRange = realIndex;
+        continue;
+      }
+&nbsp;
+      if (currentItemIsInARange &amp;&amp; currentItemBelongsToTheCurrentRange) {
+        lastIndexInRange = realIndex;
+        continue;
+      }
+    }
+    return ranges;
+  };
+&nbsp;
+  /**
+   * Prints out the list of ranges in the range collection
+   */
+  print = (logger = <span class="branch-0 cbranch-no" title="branch not covered" >console.log)</span> =&gt; {
+    logger(
+      this.toRangesList()
+        .map(([lower, upper]) =&gt; `[${lower}, ${upper})`)
+        .join(" ")
+    );
+  };
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Jan 15 2019 17:39:23 GMT-0500 (EST)
+</div>
+</div>
+<script src="prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="sorter.js"></script>
+</body>
+</html>

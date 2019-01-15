@@ -44,21 +44,19 @@ describe("rangeCollection/overview", () => {
     // Should display: [1, 8) [10, 21)
     expect(logger).toHaveBeenLastCalledWith("[1, 8) [10, 21)");
 
-    /*
     rc.remove([10, 11]);
     rc.print(logger);
     // Should display: [1, 8) [11, 21)
-    expect(lastLog).toBe("[1, 8) [11, 21)");
+    expect(logger).toHaveBeenLastCalledWith("[1, 8) [11, 21)");
 
     rc.remove([15, 17]);
     rc.print();
     // Should display: [1, 8) [11, 15) [17, 21)
-    expect(lastLog).toBe("[1, 8) [11, 15) [17, 21)");
+    expect(logger).toHaveBeenLastCalledWith("[1, 8) [11, 15) [17, 21)");
 
     rc.remove([3, 19]);
     rc.print();
     // Should display: [1, 3) [19, 21)
-    expect(lastLog).toBe("[1, 3) [19, 21)");
-    */
+    expect(logger).toHaveBeenLastCalledWith("[1, 3) [19, 21)");
   });
 });

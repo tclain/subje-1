@@ -1,12 +1,11 @@
-type RangeTupple = [number, number];
-const isRangeSignificant = (range: RangeTupple) => range[0] !== range[1];
+import { isRangeSignificant, RangeTupple, isRange } from "./range";
 /** a map that associate a number and a boolean indicating is this number is used in a range */
 type RangeMap = Map<number, boolean>;
 
 /**
  * RangeCollection class
  */
-class RangeCollection {
+export class RangeCollection {
   constructor(
     public rangeMap: RangeMap = new Map(),
     public smallestNumber = undefined,
@@ -29,10 +28,8 @@ class RangeCollection {
   };
 
   edit = (operation: "add" | "remove", range: RangeTupple) => {
-    /** if the range is not significant, ignore the  */
-    console.log();
-    console.log();
-    console.log(operation, range, this.rangeMap);
+    // check boundaries types
+    if (!isRange(range)) throw new RangeError("this is not a range");
     if (!isRangeSignificant(range)) return;
     const [lowerTarget, upperTarget] = range;
 
@@ -44,106 +41,64 @@ class RangeCollection {
 
     let index = lowerTarget;
     // updating the values depending on the operation
-    console.log("Ill go from ", lowerTarget, upperTarget);
     while (index < upperTarget) {
       this.rangeMap.set(index, operation === "add");
       index++;
     }
     this.rangeMap.set(this.largestNumber, false);
-    console.log("RESULT IS ", this.rangeMap, [
-      this.smallestNumber,
-      this.largestNumber
-    ]);
   };
 
   /**
    * trasverse the range [lowestNumer, largestNumber] and resconstruc the intervals inside an array
    */
   toRangesList = (): RangeTupple[] => {
-    console.log();
-    console.log();
-    console.log();
     /** the list of ranges to return  */
     const ranges: RangeTupple[] = [];
-
     let index = this.smallestNumber;
     /** store the current constructed range */
-    let lowerBoundRange = undefined;
+    let rangeLower = undefined;
     let lastIndexInRange = 0;
+    let rangeToInsert = [];
     while (index++ <= this.largestNumber) {
+      // utils booleans
       const realIndex = index - 1;
-      console.log("STEP", realIndex);
-      const currentIndexIsInARange = this.rangeMap.get(realIndex) === true;
-      console.log(
-        "​RangeCollection -> currentIndexIsInARange",
-        currentIndexIsInARange
-      );
-      const currentIndexIsNotInARange = this.rangeMap.get(realIndex) === false;
-      console.log(
-        "​RangeCollection -> currentIndexIsNotInARange",
-        currentIndexIsNotInARange
-      );
-      const currentIndexIsNotInCurrentRange =
-        realIndex === lastIndexInRange + 1;
-
-      console.log(
-        "​RangeCollection -> currentIndexIsNotInCurrentRange",
-        currentIndexIsNotInCurrentRange
-      );
-      const currentIndexIsInCurrentRange = !currentIndexIsNotInCurrentRange;
-      console.log(
-        "​RangeCollection -> currentIndexIsInCurrentRange",
-        currentIndexIsInCurrentRange
-      );
-      const noCurrentRange = lowerBoundRange === undefined;
-      console.log("​RangeCollection -> noCurrentRange", noCurrentRange);
-      const hasCurrentRange = !noCurrentRange;
-      console.log("​RangeCollection -> hasCurrentRange", hasCurrentRange);
-
-      /*
-      console.log("index", realIndex);
-      console.log({
-        currentIndexIsAdjacentToCurrentRange,
-        currentIndexIsInARange,
-        currentIndexIsNotInARange,
-        noCurrentRange,
-        lowerBoundRange
-      });
-      */
-
-      if (hasCurrentRange && currentIndexIsInCurrentRange) {
-        console.log("MOVE LAST INDEX IN RANGE");
-        lastIndexInRange = realIndex;
-        continue;
-      }
+      const aRangeHasStarted = rangeToInsert.length > 0;
+      const noRangeStarted = !aRangeHasStarted;
+      const currentItemIsInARange = this.rangeMap.get(realIndex) === true;
+      const currentItemShouldNotBeInARange =
+        !this.rangeMap.has(realIndex) || this.rangeMap.get(realIndex) === false;
+      const currentItemBelongsToTheCurrentRange =
+        currentItemIsInARange &&
+        aRangeHasStarted &&
+        lastIndexInRange === realIndex - 1;
+      const currentItemIsInARangeButNoTheCurrent =
+        currentItemIsInARange && !currentItemBelongsToTheCurrentRange;
+      // no in a range
+      if (noRangeStarted && currentItemShouldNotBeInARange) continue;
       if (
-        hasCurrentRange &&
-        ((currentIndexIsInARange && currentIndexIsNotInCurrentRange) ||
-          currentIndexIsNotInARange)
+        aRangeHasStarted &&
+        (currentItemShouldNotBeInARange || currentItemIsInARangeButNoTheCurrent)
       ) {
-        console.log("FLUSH");
-        // flush the current range
-        // push the new range
-        ranges.push([lowerBoundRange, lastIndexInRange + 1]);
-        lowerBoundRange = undefined;
-        continue;
-      }
+        rangeToInsert.push(lastIndexInRange + 1);
+        ranges.push(rangeToInsert as RangeTupple);
+        rangeToInsert = [];
 
-      if (currentIndexIsInARange && noCurrentRange) {
-        console.log(realIndex, index, lastIndexInRange);
-        lowerBoundRange = realIndex;
-        lastIndexInRange = realIndex;
-        continue;
-      }
-
-      if (currentIndexIsNotInARange) {
-        if (!noCurrentRange) {
-          ranges.push([lowerBoundRange, realIndex]);
-          lowerBoundRange = undefined;
+        if (currentItemIsInARangeButNoTheCurrent) {
+          rangeToInsert.push(realIndex);
         }
       }
+      if (noRangeStarted && currentItemIsInARange) {
+        rangeToInsert.push(realIndex);
+        rangeLower = realIndex;
+        lastIndexInRange = realIndex;
+        continue;
+      }
+
+      if (currentItemIsInARange && currentItemBelongsToTheCurrentRange) {
+        lastIndexInRange = realIndex;
+        continue;
+      }
     }
-    console.log(ranges);
     return ranges;
   };
 
@@ -158,50 +113,3 @@ class RangeCollection {
     );
   };
 }
-
-console.clear();
-console.log("NEW --------------- START");
-
-const rc = new RangeCollection();
-
-rc.add([1, 5]);
-rc.print();
-// Should display: [1, 5)
-
-rc.add([10, 20]);
-rc.print();
-// Should display: [1, 5) [10, 20)
-
-rc.add([20, 20]);
-rc.print();
-
-// Should display: [1, 5) [10, 20)
-rc.add([20, 21]);
-rc.print();
-// Should display: [1, 5) [10, 21)
-
-rc.add([2, 4]);
-rc.print();
-// Should display: [1, 5) [10, 21)
-
-rc.add([3, 8]);
-rc.print();
-// Should display: [1, 8) [10, 21)
-
-/*
-rc.remove([10, 10]);
-rc.print();
-// Should display: [1, 8) [10, 21)
-
-rc.remove([10, 11]);
-rc.print();
-// Should display: [1, 8) [11, 21)
-
-rc.remove([15, 17]);
-rc.print();
-// Should display: [1, 8) [11, 15) [17, 21)
-
-rc.remove([3, 19]);
-rc.print();
-// Should display: [1, 3) [19, 21)
-*/
