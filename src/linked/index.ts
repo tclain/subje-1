@@ -36,14 +36,14 @@ export class RangeCollection {
     const noInitialChain =
       root.value.lower === undefined || root.value.upper === undefined;
     console.log();
-    console.log("RESOLVE", root.chainToString(), " |||| ", range);
+    console.log("RESOLVE", operation, root.chainToString(), " |||| ", range);
 
     // in no range in the chain
     if (noInitialChain) {
       root.replace(given);
       return root;
     }
-    const solved = root.resolve(given);
+    const solved = root.resolve(operation, given);
     return solved;
   };
 
@@ -66,9 +66,10 @@ rc.add([20, 20]);
 rc.print();
 console.info("\nShould display: [1, 5) [10, 20)");
 
-rc.add([7, 8]);
+/*rc.add([7, 8]);
 rc.print();
 console.info("\nShould display: [1, 5) [10, 21)");
+*/
 
 rc.add([20, 21]);
 rc.print();
@@ -82,7 +83,6 @@ rc.add([3, 8]);
 rc.print();
 console.log("\nShould display: [1, 8) [10, 21)");
 
-/*
 rc.remove([10, 10]);
 rc.print();
 console.info("\nShould display: [1, 8) [10, 21)");
@@ -95,6 +95,7 @@ rc.remove([15, 17]);
 rc.print();
 console.info("\nShould display: [1, 8) [11, 15) [17, 21)");
 
+/*
 rc.remove([3, 19]);
 rc.print();
 console.info("\nShould display: [1, 3) [19, 21)");

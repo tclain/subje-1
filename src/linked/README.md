@@ -4,7 +4,7 @@ This directory contains a more performant approach to the problem of the range c
 
 A chained list (`./base.ts`, extended by `RangeChain` in `rangeChain.ts`) is used to represent the list of ranges. This let us have a constant access time when going through the list and inserting / removing range bounds very easily as well.
 
-O(1) complexity versus O(n) for the previous approach ! Sweat and Blood though :-)
+O(N1) [N1 number of ranges] + O(1) for removal/add of new range complexity versus O(N2) [N2 differential between bounds] for the previous approach, but N2 >> N1 at scale ! Sweat and Blood though :-)
 
 ## Add
 
