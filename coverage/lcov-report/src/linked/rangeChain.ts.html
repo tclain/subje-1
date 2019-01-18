@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/linked/rangeChain.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">All files</a> / <a href="index.html">src/linked</a> rangeChain.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">53.23% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>33/62</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">29.63% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>8/27</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">71.43% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>5/7</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">53.23% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>33/62</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line medium'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Linked } from "./base";
+import { RangeValue } from "./types";
+import {
+  upperOutsideLeft,
+  upperOutsideRight,
+  overlapLeft,
+  upperInside,
+  lowerInside
+} from "./utils";
+&nbsp;
+export class RangeChain extends Linked&lt;RangeValue&gt; {
+  equals = <span class="fstat-no" title="function not covered" >(o</span>pt: Linked&lt;RangeValue&gt;) =&gt; {
+<span class="cstat-no" title="statement not covered" >    return (</span>
+      this.value.lower === opt.value.lower &amp;&amp;
+      this.value.upper === opt.value.upper
+    );
+  };
+  currentToString = () =&gt; {
+    return `[${this.value.lower}, ${this.value.upper})`;
+  };
+  chainToString = () =&gt; {
+    let current: RangeChain = this;
+    let index = 0;
+    let stringRepresentation = "";
+    while (current) {
+      const { next } = current;
+      const space = current.isTail() ? "" : " ";
+      stringRepresentation += current.currentToString() + space;
+      index++;
+      current = next as RangeChain;
+    }
+    return stringRepresentation;
+  };
+  print = (logger = <span class="branch-0 cbranch-no" title="branch not covered" >console.log)</span> =&gt; {
+    logger(this.chainToString());
+  };
+&nbsp;
+  resolve = (range: RangeChain) =&gt; {
+    const chain = this;
+    let node = chain;
+    while (node) {
+      // no overlap
+      const insertBeforeFirst = node.isHead() &amp;&amp; upperOutsideLeft(node, range);
+      const insertAfterLast = node.isTail() &amp;&amp; upperOutsideRight(node, range);
+      const extendBefore = overlapLeft(node, range);
+      const startInCurrent = lowerInside(node, range);
+      const startAtUpperBound = node.value.upper === range.value.lower;
+&nbsp;
+      <span class="missing-if-branch" title="if path not taken" >I</span>if (insertBeforeFirst) {
+<span class="cstat-no" title="statement not covered" >        range.link(chain);</span>
+<span class="cstat-no" title="statement not covered" >        return range;</span>
+      }
+      <span class="missing-if-branch" title="else path not taken" >E</span>if (insertAfterLast) {
+        node.link(range);
+        return chain;
+      }
+<span class="cstat-no" title="statement not covered" >      if (extendBefore) {</span>
+<span class="cstat-no" title="statement not covered" >        node.value.lower = range.value.lower;</span>
+<span class="cstat-no" title="statement not covered" >        return chain;</span>
+      }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      if (startInCurrent || startAtUpperBound) {</span>
+<span class="cstat-no" title="statement not covered" >        return this.resolveEnd(node, range);</span>
+      }
+&nbsp;
+      //if (node.)
+<span class="cstat-no" title="statement not covered" >      node = node.next as any;</span>
+    }
+  };
+&nbsp;
+  resolveEnd = <span class="fstat-no" title="function not covered" >(s</span>tart: RangeChain, range: RangeChain) =&gt; {
+    const chain = <span class="cstat-no" title="statement not covered" >this;</span>
+    let node = <span class="cstat-no" title="statement not covered" >start;</span>
+<span class="cstat-no" title="statement not covered" >    while (node) {</span>
+      const next = <span class="cstat-no" title="statement not covered" >node.next as RangeChain;</span>
+      const stopIn = <span class="cstat-no" title="statement not covered" >upperInside(node, range);</span>
+      const stopBefore = <span class="cstat-no" title="statement not covered" >upperOutsideLeft(node, range);</span>
+      const stopAfterChain = <span class="cstat-no" title="statement not covered" >node.isTail() &amp;&amp; upperOutsideRight(node, range);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      if (stopBefore) {</span>
+<span class="cstat-no" title="statement not covered" >        start.value.upper = range.value.upper;</span>
+<span class="cstat-no" title="statement not covered" >        start.next = node;</span>
+<span class="cstat-no" title="statement not covered" >        return chain;</span>
+      }
+<span class="cstat-no" title="statement not covered" >      if (stopIn) {</span>
+<span class="cstat-no" title="statement not covered" >        start.value.upper = node.value.upper;</span>
+<span class="cstat-no" title="statement not covered" >        start.next = node.next as RangeChain;</span>
+<span class="cstat-no" title="statement not covered" >        return chain;</span>
+      }
+<span class="cstat-no" title="statement not covered" >      if (stopAfterChain) {</span>
+<span class="cstat-no" title="statement not covered" >        start.value.upper = range.value.upper;</span>
+<span class="cstat-no" title="statement not covered" >        start.next = null;</span>
+<span class="cstat-no" title="statement not covered" >        return chain;</span>
+      }
+<span class="cstat-no" title="statement not covered" >      node = next;</span>
+    }
+  };
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Jan 17 2019 22:00:49 GMT-0500 (EST)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

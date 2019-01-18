@@ -1,0 +1,237 @@
+
+
+
+
+
+type RangeChain = {
+  type?: "gap" | "range";
+  lower?: number;
+  upper?: number;
+  next?: RangeChain;
+};
+
+type RelativePosition =
+  | "outsideLeft"
+  | "overlapLeft"
+  | "equals"
+  | "in"
+  | "overlapRight"
+  | "outsideRight";
+
+
+
+
+type RangeTupple = [number, number];
+
+const relativeTo = (
+  reference: RangeChain,
+  given: RangeChain
+): RelativePosition => {
+  if (given.upper <= reference.lower) return "outsideLeft";
+  if (
+    given.lower < reference.lower &&
+    given.upper > reference.lower &&
+    given.upper <= reference.upper
+  )
+    return "overlapLeft";
+  if (given.lower == reference.lower && given.upper == reference.upper)
+    return "equals";
+  if (given.lower >= reference.lower && given.upper <= reference.upper)
+    return "in";
+  if (
+    given.lower >= reference.lower &&
+    given.lower < reference.upper &&
+    given.upper >= reference.upper
+  )
+    return "overlapRight";
+  if (given.upper >= reference.upper) return "outsideRight";
+};
+
+function toRange(chain: RangeChain): RangeTupple {
+  return chain ? [chain.lower, chain.upper] : null;
+}
+
+function toChain(range: RangeTupple): RangeChain {
+  return {
+    lower: range[0],
+    upper: range[1],
+    next: null
+  };
+}
+
+function rangeIsNotSignificant(range: RangeTupple) {
+  return range[0] === range[1];
+}
+
+function findStart(node: RangeChain, range: RangeChain) {
+  let position: RelativePosition;
+  let leaf = node;
+  let previous = null;
+  while (true) {
+    position = relativeTo(leaf, range);
+    if (
+      position === "in" ||
+      position === "equals" ||
+      position === "overlapLeft" ||
+      position === "overlapRight"
+    ) {
+      return {
+        position,
+        leaf: previous
+      };
+    }
+    previous = leaf;
+    leaf = node.next;
+
+    if (!leaf)
+      return {
+        position,
+        leaf
+      };
+  }
+}
+
+function findEnd(node: RangeChain, range: RangeChain) {
+  let position: RelativePosition;
+  let leaf = node;
+  let previous = null;
+
+  while (true) {
+    position = relativeTo(leaf, range);
+    if (
+      position === "in" ||
+      position === "equals" ||
+      position === "overlapLeft" ||
+      position === "overlapRight"
+    ) {
+      return {
+        position,
+        leaf: previous
+      };
+    }
+    previous = leaf;
+    leaf = node.next;
+
+    if (!leaf)
+      return {
+        position,
+        leaf
+      };
+  }
+}
+
+function set(chain, index, value) {
+    let count = 0
+    let currentNode = 
+    while(true){
+
+        count ++
+    }
+}
+
+function addRange(root: RangeChain, range: RangeTupple): RangeChain {
+  if (rangeIsNotSignificant(range)) return root;
+  const given: RangeChain = { lower: range[0], upper: range[1] };
+  const noInitialChain = root.lower === undefined || root.upper === undefined;
+
+  console.log();
+  console.log("RESOLVE", toString(root), " |||| ", range);
+
+  // in no range in the chain
+  if (noInitialChain) {
+    return {
+      ...given,
+      next: null
+    };
+  }
+
+  const startNode = findStart(root, given);
+
+  console.log("start", startNode.position, toString(startNode.leaf));
+
+  switch(startNode.position) {
+      case "outsideLeft":
+        startNode.lower = given.lower;
+       // startNode.
+
+        return root
+  }
+
+  const endNode = findEnd(startNode.leaf, given);
+
+  console.log("end", endNode.position, toString(endNode.leaf));
+}
+
+function toString(root: RangeChain) {
+  let current = root;
+  let index = 0;
+  let chain = "";
+  while (current) {
+    const { lower, upper, next } = current;
+    chain += ` {${index}} [${lower} -> ${upper})`;
+    index++;
+    current = next;
+  }
+  return chain;
+}
+
+function print(root: RangeChain) {
+  console.log("RESULT CHAIN ", toString(root));
+}
+
+let chains: RangeChain = {};
+
+console.clear();
+
+console.log("\n FIRST OUTSIDE Left");
+chains = {
+  lower: 2,
+  upper: 5,
+  next: null
+};
+chains = addRange(chains, [0, 1]);
+print(chains);
+
+console.log("\n OUTSIDE Left SOMEWHERE");
+chains = {
+  lower: 2,
+  upper: 3,
+  next: {
+    lower: 7,
+    upper: 8,
+    next: null
+  }
+};
+chains = addRange(chains, [4, 6]);
+print(chains);
+
+console.log("\nFIRST OVERLAP Left");
+
+chains = {
+  lower: 0,
+  upper: 3,
+  next: null
+};
+chains = addRange(chains, [-2, 1]);
+print(chains);
+
+console.log("\nFIRST IN");
+chains = {
+  lower: 0,
+  upper: 2,
+  next: null
+};
+
+chains = addRange(chains, [0, 1]);
+print(chains);
+
+console.log("\nFIRST EQUALS");
+chains = {
+  lower: 0,
+  upper: 2,
+  next: null
+};
+
+chains = addRange(chains, [0, 2]);
+print(chains);
+//console.log("CHAIN", chains);

@@ -169,6 +169,4 @@ I'm looping from the `smallestNumber` to the `largestNumber`:
 
 The print is then trivial with `a map` and `a join`.
 
-The complexity of the `print` function is `O(n)` when n is the distance between the `largestNumber` and the `largestNumber`
-
-## Assumptions
+The complexity of the `print` function is `O(n)` when `n` is the distance between the `largestNumber` and the `largestNumber`
